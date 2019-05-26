@@ -7,3 +7,5 @@
 * format output
 * other exchange
 * add redis/firebase to store custom format/style...
+* triangular arbitrage
+* grid trading

@@ -3,6 +3,7 @@ require 'telegram/bot'
 require 'yaml'
 require 'json'
 require_relative 'lib/telegram-bot.rb'
+require_relative 'lib/bitopro-api.rb'
 
 $settings = YAML.load_file('./config.yml')
 
@@ -23,10 +24,17 @@ Telegram::Bot::Client.run($settings[:telegram_token]) do |bot|
     when 'help', 'ls'
       "
 You can control me by sending these commands:
+tickers
+tickers <pair>
 balance
 order
 history
       "
+    when 'tickers', 'ticker'
+      bp_client.tickers.to_s[0..100]
+    when /\A(tickers)(\s)([a-z_]+)\z/, /\A(ticker)(\s)([a-z_]+)\z/
+      pair = $3
+      bp_client.tickers(pair).to_s
     when 'balance', 'balances', 'account_balance', 'account_balance'
       bp_client.account_balance.to_s
     when 'order', 'orders'
