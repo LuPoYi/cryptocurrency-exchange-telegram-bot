@@ -26,15 +26,24 @@ Telegram::Bot::Client.run($settings[:telegram_token]) do |bot|
 You can control me by sending these commands:
 tickers
 tickers <pair>
+orderbook <pair>
+trades <pair>
+
 balance
 order
 history
       "
     when 'tickers', 'ticker'
-      bp_client.tickers.to_s[0..100]
+      bp_client.tickers.to_s[0..300]
     when /\A(tickers)(\s)([a-z_]+)\z/, /\A(ticker)(\s)([a-z_]+)\z/
       pair = $3
       bp_client.tickers(pair).to_s
+    when /\A(order_book)(\s)([a-z_]+)\z/, /\A(orderbook)(\s)([a-z_]+)\z/
+      pair = $3
+      bp_client.order_book(pair).to_s[0..300]
+    when /\A(trades)(\s)([a-z_]+)\z/
+      pair = $3
+      bp_client.recent_trades(pair).to_s[0..300]
     when 'balance', 'balances', 'account_balance', 'account_balance'
       bp_client.account_balance.to_s
     when 'order', 'orders'

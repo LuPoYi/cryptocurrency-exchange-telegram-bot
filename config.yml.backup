@@ -1,5 +1,5 @@
 ---
-:telegram-token: ''
+:telegram_token: ''
 :bitopro:
   :email: ''
   :key: ''
