@@ -4,3 +4,6 @@
   :email: ''
   :key: ''
   :secret: ''
+:bitfinex:
+  :key: ''
+  :secret: ''

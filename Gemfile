@@ -7,3 +7,4 @@ gem 'redis'
 gem 'telegram-bot-ruby'
 
 gem 'bitopro'
+gem 'bitfinex-rb', :require => "bitfinex"

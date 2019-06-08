@@ -1,4 +1,5 @@
 require "bitopro"
+require "bitfinex"
 require 'telegram/bot'
 require 'yaml'
 require 'json'
@@ -7,6 +8,13 @@ require_relative 'lib/bitopro-api.rb'
 
 $settings = YAML.load_file('./config.yml')
 
+# Bitfinex
+bf_client = Bitfinex::RESTv1.new({
+  api_key: $settings[:bitfinex][:key],
+  api_secret: $settings[:bitfinex][:secret],
+})
+
+# BitoPro
 Bitopro.configure do |config|
   config.email = $settings[:bitopro][:email]
   config.key = $settings[:bitopro][:key]
