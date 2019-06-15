@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'json'
+gem 'json'
 
 gem 'rest-client'
 gem 'redis'

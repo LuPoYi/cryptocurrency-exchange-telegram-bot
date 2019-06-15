@@ -1,5 +1,6 @@
 require "bitopro"
 require "bitfinex"
+require 'decimal'
 require 'telegram/bot'
 require 'yaml'
 require 'json'
